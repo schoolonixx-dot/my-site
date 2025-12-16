@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION BAR -->
+ 
+<header class="navbar">
+<h2>
+<a href="#home">Home</a> |
+<a href="#about">About Me</a> |
+<a href="#contact">Message Me</a>
+</h2>
+</header>
+
+
+<hr>
+
+
+<!-- MAIN LAYOUT (Flexbox) -->
+<section id="main-content">
+
+
+<!-- LEFT COLUMN -->
+<div class="left-column">
+
+
+<div id="home" class="profile-section">
+<img
+src="Chin.jpg"
+class="profile-img" alt="Profile Image">
+
+
+<h2 class="profile-name">Justine Gabriel Chin</h2>
+<span class="job-title">IT Student | NU Fairview</span>
+</div>
+
+
+<hr>
+ 
+<div class="contact-section" id="contact-info">
+<h3>Contact</h3>
+<p>Email: <a href="mailto:chinjh1@students.nu-
+fairview.edu.ph">chinjh1@students.nu-fairview.edu.ph</a></p>
+<p>Contact Number: <a href="tel:09397257172" class="phone- number">09397257172</a></p>
+</div>
+
+
+
+<h3>Experiences</h3>
+<ul>
+<li>Gained experience in sharing ideas, coordinating roles, and supporting others.</li>
+<li>Took the lead on small projects and organized tasks towards completion.</li>
+</ul>
+ 
+<hr>
+
+
+<h3>Achievements</h3>
+<ul>
+<li>Built a consistent habit of self-improvement through daily learning.</li>
+<li>Turned initial ideas into finished results with dedication.</li>
+</ul>
+</div>
+</div>
+
+
+<!-- RIGHT COLUMN -->
+<div class="right-column">
+
+
+<div id="about" class="about-section">
+<h2>About Me</h2>
+<p>
+
+
+</p>
+</div>
+ 
+I'm someone who loves learning, creating, and improving every day. I enjoy working on projects that challenge me to grow and allow me to turn ideas into something meaningful. Whether I’m solving problems, exploring new skills, or collaborating with others, I bring curiosity, dedication, and a positive mindset.
+ 
+
+
+<hr>
+
+
+<div id="contact" class="message-form">
+ 
+<h2>Message Me</h2>
+<form action="submit" method="post">
+<p>
+Name:<br>
+<input type="text" name="name">
+</p>
+
+
+<p>
+Email:<br>
+<input type="email" name="email">
+</p>
+
+
+<p>
+<input type="submit" value="Send">
+</p>
+</form>
+</div>
+
+
+</div>
+</section>
+
+
+<hr>
+
+
+<!-- Add buttons under your profile/job title -->
+<button id="themeBtn">Toggle Dark Mode</button>
+<button id="editJobBtn">Edit Job Title</button>
+<button id="toggleSkillsBtn">Hide Skills</button>
+
+<!-- Skills section -->
+<div id="skillsSection">
+  <h3>Skills</h3>
+  <ul>
+    <li>Web Development (HTML, CSS, JavaScript)</li>
+    <li>Programming Languages (Python, Java, C++)</li>
+    <li>Database Management (SQL, MongoDB)</li>
+  </ul>
+</div>
+
+<!-- Message form with textarea & counter -->
+<textarea id="msgBox" maxlength="200"></textarea>
+<p>Characters left: <span id="counter">200</span></p>
+
+<!-- Form fields with IDs for validation -->
+<p>
+  Name:<br>
+  <input type="text" id="nameField">
+</p>
+<p>
+  Email:<br>
+  <input type="email" id="emailField">
+</p>
+<p>
+  <input type="submit" value="Send" onclick="return validateForm()">
+</p>
+
+
+<!-- Extra Feature: Random Quote Generator -->
+<button id="quoteBtn">Show Motivational Quote</button>
+<p id="quoteDisplay"></p>
+
+ 
+<script>
+// A. Change Theme (Dark/Light Mode)
+document.getElementById("themeBtn").addEventListener("click", function() {
+  document.body.classList.toggle("dark-mode");
+});
+
+// B. Edit Job Title
+document.getElementById("editJobBtn").addEventListener("click", function() {
+  let newTitle = prompt("Enter your new job title:");
+  if (newTitle) {
+    document.querySelector(".job-title").textContent = newTitle;
+  }
+});
+
+// C. Show/Hide Skills
+document.getElementById("toggleSkillsBtn").addEventListener("click", function() {
+  let skills = document.getElementById("skillsSection");
+  if (skills.style.display === "none") {
+    skills.style.display = "block";
+    this.textContent = "Hide Skills";
+  } else {
+    skills.style.display = "none";
+    this.textContent = "Show Skills";
+  }
+});
+
+// D. Live Character Counter
+let msgBox = document.getElementById("msgBox");
+let counter = document.getElementById("counter");
+msgBox.addEventListener("keyup", function() {
+  let remaining = 200 - msgBox.value.length;
+  counter.textContent = remaining;
+});
+
+// E. Form Validation
+function validateForm() {
+  let name = document.getElementById("nameField").value.trim();
+  let email = document.getElementById("emailField").value.trim();
+  if (name === "" || email === "") {
+    alert("Please fill out both Name and Email fields.");
+    return false;
+  }
+  return true;
+}
+
+// F. Display Today’s Date in Footer
+document.getElementById("dateDisplay").textContent = "Today's Date: " + new Date().toDateString();
+
+// G. Extra Feature: Random Quote Generator
+const quotes = [
+  "Keep pushing forward, success is near!",
+  "Every day is a chance to learn something new.",
+  "Stay curious, stay motivated.",
+  "Hard work beats talent when talent doesn’t work hard.",
+  "Your dedication today builds your future tomorrow."
+];
+
+document.getElementById("quoteBtn").addEventListener("click", function() {
+  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  document.getElementById("quoteDisplay").textContent = randomQuote;
+});
+</script>
+
+<!-- FOOTER -->
+<footer class="footer">
+<p><strong>WebProg - Web Programming 2025</strong></p>
+</footer>
+
+
+</body>
+</html>
